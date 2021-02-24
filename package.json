@@ -1,12 +1,12 @@
 {
   "name": "mshops-back",
   "version": "1.0.0",
-  "description": "node api",
+  "description": "Node.js API",
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["Node", "Express", "back end", "api"],
+  "keywords": ["Node.js", "Express.js", "Back End", "API"],
   "author": "<juancaricodev@gmail.com>",
   "license": "ISC"
 }
