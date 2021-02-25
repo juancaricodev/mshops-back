@@ -3,19 +3,19 @@ const ItemsService = require('../services/items')
 
 const itemsApi = (app) => {
   const router = express.Router()
-  app.use('/api/items', router)
+  app.use('/api', router)
 
   const itemsService = new ItemsService()
 
-  router.get('/:query', async (req, res, next) => {
+  router.get('/items?:query', async (req, res, next) => {
     const { query } = req.params
 
     try {
       const items = await itemsService.getItems({ query })
 
       res.status(200).json({
-        data: items,
-        message: 'Data fetched correctly'
+        message: 'Data fetched correctly',
+        data: items
       })
     } catch (err) {
       next(err)
