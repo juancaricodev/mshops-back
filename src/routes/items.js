@@ -7,13 +7,15 @@ const itemsApi = (app) => {
 
   const itemsService = new ItemsService()
 
-  router.get('/', async (req, res, next) => {
+  router.get('/:query', async (req, res, next) => {
+    const { query } = req.params
+
     try {
-      const items = await itemsService.getItems()
+      const items = await itemsService.getItems({ query })
 
       res.status(200).json({
         data: items,
-        message: 'Person fetched correctly'
+        message: 'Data fetched correctly'
       })
     } catch (err) {
       next(err)
