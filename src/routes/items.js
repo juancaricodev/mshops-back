@@ -21,7 +21,7 @@ const itemsApi = (app) => {
             },
             items: items
           })
-        : res.status(404).send('Wrong request')
+        : res.status(400).send('Bad request')
     } catch (err) {
       next(err)
     }
