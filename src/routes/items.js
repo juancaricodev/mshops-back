@@ -13,13 +13,15 @@ const itemsApi = (app) => {
     try {
       const items = await itemsService.getItems(search)
 
-      res.status(200).json({
-        author: {
-          name: 'Juan Camilo',
-          lastname: 'Rico Orjuela'
-        },
-        items: items.results
-      })
+      search
+        ? res.status(200).json({
+            author: {
+              name: 'Juan Camilo',
+              lastname: 'Rico Orjuela'
+            },
+            items: items
+          })
+        : res.status(404).send('Wrong request')
     } catch (err) {
       next(err)
     }
