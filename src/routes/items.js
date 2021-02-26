@@ -1,22 +1,27 @@
 const express = require('express')
+const ItemsService = require('../services/items')
 
 const itemsApi = (app) => {
   const router = express.Router()
-  app.use('/api/person', router)
+  app.use('/api', router)
 
-  router.get('/', async (req, res, next) => {
-    const data = {
-      name: 'Juanca',
-      lastname: 'Rico'
-    }
+  const itemsService = new ItemsService()
+
+  router.get('/items?', async (req, res, next) => {
+    const search = req.query.q
 
     try {
-      const person = await Promise.resolve(data)
+      const items = await itemsService.getItems(search)
 
-      res.status(200).json({
-        data: person,
-        message: 'Person fetched correctly'
-      })
+      search
+        ? res.status(200).json({
+            author: {
+              name: 'Juan Camilo',
+              lastname: 'Rico Orjuela'
+            },
+            items: items
+          })
+        : res.status(400).send('Bad request')
     } catch (err) {
       next(err)
     }
