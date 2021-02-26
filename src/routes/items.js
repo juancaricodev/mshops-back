@@ -7,15 +7,18 @@ const itemsApi = (app) => {
 
   const itemsService = new ItemsService()
 
-  router.get('/items?:query', async (req, res, next) => {
-    const { query } = req.params
+  router.get('/items?', async (req, res, next) => {
+    const search = req.query.q
 
     try {
-      const items = await itemsService.getItems({ query })
+      const items = await itemsService.getItems(search)
 
       res.status(200).json({
-        message: 'Data fetched correctly',
-        data: items
+        author: {
+          name: 'Juan Camilo',
+          lastname: 'Rico Orjuela'
+        },
+        items: items.results
       })
     } catch (err) {
       next(err)
