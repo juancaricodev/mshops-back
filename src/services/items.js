@@ -5,7 +5,7 @@ class ItemsService {
     const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`)
     const items = await response.json()
 
-    const itemsFormatted = items.results.map((item) => {
+    const Items = items.results.map((item) => {
       return {
         id: item.id,
         title: item.title,
@@ -21,7 +21,7 @@ class ItemsService {
       }
     })
 
-    return itemsFormatted
+    return Items
   }
 }
 
