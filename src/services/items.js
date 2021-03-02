@@ -10,12 +10,15 @@ class ItemsService {
 
     const Items = formatItems(items.results)
 
-    const Categories = itemsCategories(items.filters)
+    let Categories
+
+    !items.filters.length > 0
+      ? Categories = [items.query]
+      : Categories = itemsCategories(items.filters)
 
     const result = {
       Categories, Items
     }
-    console.log(result)
 
     return result
   }
