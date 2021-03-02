@@ -8,6 +8,10 @@ class ItemIdService {
     const resDescription = await fetch(`https://api.mercadolibre.com/items/${itemId}/description`)
     const itemDescription = await resDescription.json()
 
+    const idCategory = itemData.category_id
+    const resCategories = await fetch(`https://api.mercadolibre.com/categories/${idCategory}`)
+    const itemCategories = await resCategories.json()
+
     const Item = {
       id: itemData.id,
       title: itemData.title,
@@ -20,7 +24,8 @@ class ItemIdService {
       condition: itemData.condition,
       free_shipping: itemData.shipping.free_shipping,
       sold_quantity: itemData.sold_quantity,
-      description: itemDescription.plain_text
+      description: itemDescription.plain_text,
+      categories: itemCategories.path_from_root.map(e => e.name)
     }
 
     return Item
