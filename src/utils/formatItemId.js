@@ -1,3 +1,5 @@
+const formatPictureUrl = require('./formatPictureUrl')
+
 const formatItemId = (item, description, categories) => {
   const itemFormatted = {
     id: item.id,
@@ -7,7 +9,7 @@ const formatItemId = (item, description, categories) => {
       amount: Math.trunc(item.price),
       decimals: item.price - Math.trunc(item.price)
     },
-    picture: item.pictures[0].url,
+    picture: formatPictureUrl(item.pictures[0].url),
     condition: item.condition,
     free_shipping: item.shipping.free_shipping,
     sold_quantity: item.sold_quantity,

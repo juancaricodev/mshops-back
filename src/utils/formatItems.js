@@ -1,3 +1,5 @@
+const formatPictureUrl = require('./formatPictureUrl')
+
 const formatItems = (items) => {
   const itemsFormatted = items.map(item => {
     return {
@@ -8,7 +10,7 @@ const formatItems = (items) => {
         amount: Math.trunc(item.price),
         decimals: item.price - Math.trunc(item.price)
       },
-      picture: item.thumbnail,
+      picture: formatPictureUrl(item.thumbnail),
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
       address: item.address.state_name
