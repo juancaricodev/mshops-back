@@ -11,7 +11,7 @@ const itemsApi = (app) => {
     const search = req.query.q
 
     try {
-      const items = await itemsService.getItems(search)
+      const data = await itemsService.getItems(search)
 
       search
         ? res.status(200).json({
@@ -19,7 +19,8 @@ const itemsApi = (app) => {
               name: 'Juan Camilo',
               lastname: 'Rico Orjuela'
             },
-            items: items
+            categories: data.Categories,
+            items: data.Items
           })
         : res.status(400).send('Bad request')
     } catch (err) {
