@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 
 const formatItems = require('../utils/formatItems')
+const itemsCategories = require('../utils/itemsCategories')
 
 class ItemsService {
   async getItems (query) {
@@ -25,7 +26,7 @@ class ItemsService {
 
     const Items = formatItems(items.results)
 
-    const Categories = items.filters.filter(e => e.id === 'category')[0].values[0].path_from_root.map(e => e.name)
+    const Categories = itemsCategories(items.filters)
 
     const result = {
       Categories, Items
