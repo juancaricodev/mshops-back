@@ -21,7 +21,14 @@ class ItemsService {
       }
     })
 
-    return Items
+    const Categories = items.filters.filter((element) => element.id === 'category')[0].values[0].path_from_root.map(e => e.name)
+
+    const result = {
+      Categories, Items
+    }
+    console.log(result)
+
+    return result
   }
 }
 
