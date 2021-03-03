@@ -5,4 +5,9 @@ const config = {
   port: process.env.PORT || 3000
 }
 
-module.exports = { config }
+const corsOptions = {
+  origin: ['https://mshops-juancaricodev.netlify.app/', 'http://localhost:3000'],
+  optionsSuccessStatus: 200
+}
+
+module.exports = { config, corsOptions }

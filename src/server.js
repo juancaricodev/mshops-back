@@ -2,11 +2,11 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-const { config } = require('./config/index')
+const { config, corsOptions } = require('./config/index')
 const itemsApi = require('./routes/items')
 const itemIdApi = require('./routes/itemId')
 
-app.use(cors())
+app.use(cors(corsOptions))
 
 itemsApi(app)
 itemIdApi(app)
