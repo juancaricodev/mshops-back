@@ -6,7 +6,7 @@ const config = {
 }
 
 const corsOptions = {
-  origin: ['https://mshops-juancaricodev.netlify.app', 'http://localhost:3000'],
+  origin: ['https://mshops-juancaricodev.netlify.app', 'http://localhost:3000', 'http://localhost:5000'],
   optionsSuccessStatus: 200
 }
 
